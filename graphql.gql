@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Picture {
+  _id: String!
+  filename: String!
+}
+
+type Hero {
+  _id: String!
+  nickname: String!
+  real_name: String
+  origin_description: String
+  superpowers: [String]!
+  catch_phrase: String
+  images: [Picture!]!
+}
+
+type Query {
+  heroes(page: Int = 1): [Hero!]
+  heroesCount: Int!
+  pageCount: Int!
+  hero(id: ID!): Hero!
+}
+
+type Mutation {
+  create(input: CreateHeroInput!): Hero!
+  update(input: UpdateHeroInput!): Hero!
+  remove(id: ID!): Hero!
+  uploadPicture(id: ID!, picture: Upload!): Hero!
+  removePicture(id: ID!, heroId: ID!): Hero!
+}
+
+input CreateHeroInput {
+  nickname: String!
+}
+
+input UpdateHeroInput {
+  _id: ID!
+  nickname: String!
+  real_name: String!
+  origin_description: String!
+  superpowers: [String]!
+  catch_phrase: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
