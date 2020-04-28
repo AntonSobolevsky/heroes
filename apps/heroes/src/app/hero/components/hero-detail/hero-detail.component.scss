@@ -1,0 +1,69 @@
+.form-wrapper {
+  display: flex;
+  max-width: 960px;
+  margin: 0 auto;
+
+  fieldset {
+    padding: 20px;
+    flex: 1 1;
+
+    legend {
+      font-size: 18px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.superpower-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.superpower-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-2 {
+  margin-bottom: 15px;
+}
+
+.image-field {
+  position: relative;
+  display: inline-flex;
+
+  &:hover .delete-btn {
+    opacity: 1;
+  }
+}
+
+.delete-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .2s ease-out;
+  z-index: 1;
+}
+
+mat-card-actions,
+.upload-btn {
+  width: 100%;
+}
+
+img {
+  margin: 5px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgba(black, .3);
+}
+

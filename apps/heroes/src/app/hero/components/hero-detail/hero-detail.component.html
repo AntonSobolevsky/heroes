@@ -1,0 +1,77 @@
+<div class="form-wrapper">
+  <fieldset>
+    <legend>Main</legend>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="updateHero($event)">
+      <p>
+        <mat-form-field>
+          <mat-label>Nickname</mat-label>
+          <input matInput type="text" formControlName="nickname">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Real name</mat-label>
+          <input matInput type="text" formControlName="real_name">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Origin description</mat-label>
+          <textarea matInput formControlName="origin_description"></textarea>
+        </mat-form-field>
+      </p>
+
+      <div class="mb-2" formArrayName="superpowers">
+        <div class="superpower-field">
+          <label>Superpowers</label>
+          <button type="button" mat-mini-fab aria-label="Add Superpower" color="primary" (click)="addSuperpowerRow()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="superpower-row" *ngFor="let cont of form.get('superpowers').controls; let i = index">
+          <mat-form-field>
+            <input matInput type="text" [formControl]="cont" />
+          </mat-form-field>
+          <button type="button" mat-mini-fab aria-label="Add Superpower" color="warn" (click)="removeSuperpowerRow(i)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Catch phrase</mat-label>
+          <textarea matInput formControlName="catch_phrase"></textarea>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <button mat-flat-button color="primary" type="submit">Submit</button>
+      </p>
+
+    </form>
+  </fieldset>
+
+  <fieldset>
+    <legend>Images</legend>
+      <div class="image-field" *ngFor="let image of images; let i = index">
+        <img class="image-preview" [src]="'/uploads/' + image.filename" [alt]="" width="200">
+        <button mat-mini-fab type="button" class="delete-btn" color="warn" (click)="removeImage(i, image)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <mat-card-actions>
+        <button mat-button class="upload-btn" color="warn" (click)="onClick()">
+            <mat-icon>file_upload</mat-icon>
+            Upload
+        </button>
+      </mat-card-actions>
+
+      <input type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" />
+  </fieldset>
+</div>

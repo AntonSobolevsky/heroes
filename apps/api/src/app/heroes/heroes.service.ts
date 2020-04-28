@@ -31,7 +31,7 @@ export class HeroesService {
 
   async remove(id: string): Promise<Hero | UserInputError> {
     try {
-      const hero = await this.heroModel.findByIdAndRemove(id);
+      const hero = await this.heroModel.findByIdAndDelete(id);
       return hero;
     } catch (err) {
       return new UserInputError(`This superhero doesn't exist!`);
